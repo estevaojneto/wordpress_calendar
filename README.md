@@ -1,2 +1,2 @@
 # wordpress_calendar
-Wordpress Calendar
+A WordPress plugin for an event calendar.
