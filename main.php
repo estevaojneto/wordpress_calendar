@@ -87,8 +87,16 @@ function eventPostType() {
 		'publicly_queryable'    => true,
 		'register_meta_box_cb' => 'eventMetaBoxes',
 		'capability_type'       => 'page',
-	);
+	);	
 	register_post_type( 'event', $args );
+	register_taxonomy('event-category', 'event', array(
+		'hierarchical'    => false,
+		'singular_name'	  => __( 'Event' ),
+		'label'           => __( 'Event categories' ),
+		'query_var'       => 'events-category',
+		'rewrite'         => array('slug' => 'events' ),
+		)
+	);
 
 }
 
