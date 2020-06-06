@@ -7,7 +7,6 @@ function setRewrite()
     return;
 }
 
-
 function eventPostType()
 {
     $labels = array(
@@ -68,5 +67,18 @@ function eventPostType()
         'rewrite'         => array('slug' => 'events')
        )
     );
-    return
+    return;
+}
+
+function loadFullCalendarCss(){
+	wp_enqueue_style('fullcalendar_css', 'https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/4.2.0/core/main.min.css', array(), '4.2.0', 'all');
+	wp_enqueue_style('fullcalendar_daygrid_css', 'https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/4.2.0/daygrid/main.min.css', array(), '4.2.0', 'all');
+	return;
+}
+
+function loadFullCalendarJs() {
+    wp_enqueue_script('fullcalendar_js', 'https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/4.2.0/core/main.min.js', array( 'jquery' ), '4.2.0', false );
+	wp_enqueue_script('fullcalendar_daygrid_js', 'https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/4.2.0/daygrid/main.min.js', array( 'jquery' ), '4.2.0', false );
+	wp_enqueue_script('load_calendar', plugin_dir_url( __FILE__ ).'scripts/load_calendar.js', array( 'jquery' ), '0.0.1', false );
+	return;
 }

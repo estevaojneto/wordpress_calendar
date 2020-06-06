@@ -1,5 +1,9 @@
 <?php
-echo "Events for month:".get_query_var('monthnum');
+get_header();
+echo "<input type='hidden' id='monthnum' value=".get_query_var('monthnum').">";
+echo "<input type='hidden' id='day' value=".get_query_var('day').">";
+echo "<input type='hidden' id='year' value=".get_query_var('year').">";
+
 $month_from_wp = get_query_var('monthnum');
 $month_number = sprintf('%02d', $month_from_wp);
 
@@ -14,6 +18,7 @@ $args = array(
 	'type' => 'DATE'
 );
 
+echo "<div id='calendar'></div>";
 $the_query = new WP_Query( $args );
 // The Loop
 if ( $the_query->have_posts() ) {
@@ -26,4 +31,5 @@ if ( $the_query->have_posts() ) {
 } else {
     // no posts found
 }
+get_footer();
 ?>

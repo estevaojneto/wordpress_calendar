@@ -10,6 +10,8 @@ include_once('libraries/meta-box/meta-box.php');
 
 add_action('init', 'eventPostType', 0);
 add_action('init', 'setRewrite', 1);
+add_action('init', 'loadFullCalendarCss');
+add_action('wp_enqueue_scripts', 'loadFullCalendarJs');
 include_once('create_actions.php');
 
 add_filter('archive_template', 'createEventArchive') ;
