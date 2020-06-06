@@ -10,4 +10,14 @@ document.addEventListener('DOMContentLoaded', function() {
         }  
     });
     calendar.render();
+    for(i = 0; i < parseInt(document.getElementById('qty_events').value); i++){
+        startDate = document.getElementById('start_date'+String(i)).value;
+        eventName = document.getElementById('event_name'+String(i)).value;
+        console.log('start_date'.i);
+        calendar.addEvent({
+          title: eventName,
+          start: new Date(startDate),
+          allDay: true
+        });
+    }
 });
