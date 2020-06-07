@@ -10,6 +10,7 @@
 defined('ABSPATH') or die('This plugin must not be directly accessed. Halting.');
 // Metabox was included as a library for this example; for a production environment,
 // it would be more proper to include it as a dependency.
+define( 'BEC_PLUGIN_PATH', plugin_dir_path( __FILE__ ) );
 include_once('libraries/meta-box/meta-box.php');
 
 /* These will set our action hooks.

@@ -14,7 +14,7 @@
 function createEventArchive($archive_template)
 {
     if (is_post_type_archive('event')) {
-        $archive_template = dirname(__FILE__) . '/templates/archive-event.php';
+        $archive_template = BEC_PLUGIN_PATH . 'templates/archive-event.php';
     }
     return $archive_template;
 }
@@ -22,7 +22,7 @@ function createEventArchive($archive_template)
 function createSingleEventTemplate($single_template)
 {
     if (is_single() && get_post_type() === 'event') {
-        $single_template = dirname(__FILE__) . '/templates/single-event.php';
+        $single_template = BEC_PLUGIN_PATH . 'templates/single-event.php';
     }
     return $single_template;
 }
@@ -66,10 +66,10 @@ function createEventMetaBoxes()
                 'id'              => 'recurrency',
                 'type'            => 'select',
                 'options'         => array(
-                    '0'       => 'Single-time event',
-                    '1' => 'Every day',
-                    '7'        => 'Every week',
-                    '30'     => 'Every month',
+                    0       => 'Single-time event',
+                    1 => 'Every day',
+                    7        => 'Every week',
+                    30     => 'Every month',
                 ),
                 'multiple'        => false,
 				'required'  => true,
