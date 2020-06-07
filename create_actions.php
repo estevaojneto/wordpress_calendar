@@ -1,13 +1,40 @@
 <?php
+/** This file has the functions for the add_actions we defined in main.php;
+ * these set much of what our plugin does.
+ * FUNCTIONS:
+ * setRewriteRules(): sets rewrite rules to avoid problematic archiving and broken links,
+ * and gives us some nice readable event URLs;
+ * 
+ * setEventRecurrency(): creates multiple events with a certain time interval between
+ * them, as requested by documentation;
+ * 
+ * createEventCPTAndTaxonomy(): creates a CPT called "event", and also its taxonomy;
+ * for simplicity, we'll create these together as their existance is very closely linked;
+ * 
+ * loadFullCalendarCss(): FullCalendar is the jQuery plugin we are using on the archive page,
+ * and this function is responsible for loading its CSS (must be loaded before the script);
+ * 
+ * loadFullCalendarJs(): same as above but with JS; this must be loaded *after* the style and
+ * *after* jQuery is loaded.
+ */
 
-function setRewrite()
+function setRewriteRules()
 {
     global $wp_rewrite;
     $wp_rewrite->set_permalink_structure('/%category%/%postname%');
     return;
 }
 
-function eventPostType()
+function setEventRecurrency($post_id, $post)
+{
+    if(!is_object($post) || !isset($post->post_type)) {
+        return;
+    }
+	$recurrency_rate = get_post_meta( $post->ID, 'recurrency', true );
+    return;
+}
+
+function createEventCPTAndTaxonomy()
 {
     $labels = array(
         'name'                  => _x('Events', 'Event General Name', 'text_domain'),
@@ -55,7 +82,7 @@ function eventPostType()
         'rewrite' => array('slug' => 'events'),
         'exclude_from_search'   => false,
         'publicly_queryable'    => true,
-        'register_meta_box_cb' => 'eventMetaBoxes',
+        'register_meta_box_cb' => 'createEventMetaBoxes',
         'capability_type'       => 'page',
     );
     register_post_type('event', $args);
