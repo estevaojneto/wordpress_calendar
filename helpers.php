@@ -1,4 +1,5 @@
 <?php
+
 /**This file has functions which can be reused and/or they are too complex to simply
  * be put on other files which are already doing other functions - I especially 
  * want the template controllers to remain clean and comply with SRP.
@@ -22,6 +23,9 @@ function calcRecurringEventDates($originalDate, $recurrency, $currentDate)
 {
     $eventDates = [];
     switch($recurrency){
+        case 0:
+            array_push($eventDates, $originalDate);
+            break;
         case 1: // daily event
             $originalDate = date('Y-m-d', strtotime($originalDate));
             $currentDate = date('Y-m-d', strtotime($currentDate));
@@ -45,8 +49,15 @@ function calcRecurringEventDates($originalDate, $recurrency, $currentDate)
             array_push($eventDates, $resultingDate);
 			break;
         default:
-            return false; // single event or unexpected recurrency (weird value); returns false
+            return false; // unexpected recurrency (weird value); returns false
             break;
     }
     return $eventDates;
+}
+
+function calcClosestEventDate($eventDates)
+{
+	if(!is_array($eventDates)) // we're expect an array, more precisely one created by calcRecurringEventDates()
+		return false;
+	// TODO rest of logic
 }

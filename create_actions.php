@@ -24,6 +24,11 @@ function setRewriteRules()
     $wp_rewrite->set_permalink_structure('/%category%/%postname%');
     return;
 }
+// Load files for internationalization
+function loadPluginI18N(){
+    load_plugin_textdomain('becTextDomain', false, BEC_PLUGIN_PATH . '/languages/');
+    return;
+}
 
 function setEventRecurrency($post_id, $post)
 {
@@ -37,37 +42,37 @@ function setEventRecurrency($post_id, $post)
 function createEventCPTAndTaxonomy()
 {
     $labels = array(
-        'name'                  => _x('Events', 'Event General Name', 'text_domain'),
-        'singular_name'         => _x('Event', 'Event Singular Name', 'text_domain'),
-        'menu_name'             => __('Events', 'text_domain'),
-        'name_admin_bar'        => __('Event', 'text_domain'),
-        'archives'              => __('Item Archives', 'text_domain'),
-        'attributes'            => __('Item Attributes', 'text_domain'),
-        'parent_item_colon'     => __('Parent Item:', 'text_domain'),
-        'all_items'             => __('All Items', 'text_domain'),
-        'add_new_item'          => __('Add New Item', 'text_domain'),
-        'add_new'               => __('Add New', 'text_domain'),
-        'new_item'              => __('New Item', 'text_domain'),
-        'edit_item'             => __('Edit Item', 'text_domain'),
-        'update_item'           => __('Update Item', 'text_domain'),
-        'view_item'             => __('View Item', 'text_domain'),
-        'view_items'            => __('View Items', 'text_domain'),
-        'search_items'          => __('Search Item', 'text_domain'),
-        'not_found'             => __('Not found', 'text_domain'),
-        'not_found_in_trash'    => __('Not found in Trash', 'text_domain'),
-        'featured_image'        => __('Featured Image', 'text_domain'),
-        'set_featured_image'    => __('Set featured image', 'text_domain'),
-        'remove_featured_image' => __('Remove featured image', 'text_domain'),
-        'use_featured_image'    => __('Use as featured image', 'text_domain'),
-        'insert_into_item'      => __('Insert into item', 'text_domain'),
-        'uploaded_to_this_item' => __('Uploaded to this item', 'text_domain'),
-        'items_list'            => __('Items list', 'text_domain'),
-        'items_list_navigation' => __('Items list navigation', 'text_domain'),
-        'filter_items_list'     => __('Filter items list', 'text_domain'),
+        'name'                  => _x('Events', 'Event General Name', 'becTextDomain'),
+        'singular_name'         => _x('Event', 'Event Singular Name', 'becTextDomain'),
+        'menu_name'             => __('Events', 'becTextDomain'),
+        'name_admin_bar'        => __('Event', 'becTextDomain'),
+        'archives'              => __('Item Archives', 'becTextDomain'),
+        'attributes'            => __('Item Attributes', 'becTextDomain'),
+        'parent_item_colon'     => __('Parent Item:', 'becTextDomain'),
+        'all_items'             => __('All Items', 'becTextDomain'),
+        'add_new_item'          => __('Add New Item', 'becTextDomain'),
+        'add_new'               => __('Add New', 'becTextDomain'),
+        'new_item'              => __('New Item', 'becTextDomain'),
+        'edit_item'             => __('Edit Item', 'becTextDomain'),
+        'update_item'           => __('Update Item', 'becTextDomain'),
+        'view_item'             => __('View Item', 'becTextDomain'),
+        'view_items'            => __('View Items', 'becTextDomain'),
+        'search_items'          => __('Search Item', 'becTextDomain'),
+        'not_found'             => __('Not found', 'becTextDomain'),
+        'not_found_in_trash'    => __('Not found in Trash', 'becTextDomain'),
+        'featured_image'        => __('Featured Image', 'becTextDomain'),
+        'set_featured_image'    => __('Set featured image', 'becTextDomain'),
+        'remove_featured_image' => __('Remove featured image', 'becTextDomain'),
+        'use_featured_image'    => __('Use as featured image', 'becTextDomain'),
+        'insert_into_item'      => __('Insert into item', 'becTextDomain'),
+        'uploaded_to_this_item' => __('Uploaded to this item', 'becTextDomain'),
+        'items_list'            => __('Items list', 'becTextDomain'),
+        'items_list_navigation' => __('Items list navigation', 'becTextDomain'),
+        'filter_items_list'     => __('Filter items list', 'becTextDomain'),
     );
     $args = array(
-        'label'                 => __('Event', 'text_domain'),
-        'description'           => __('Event Description', 'text_domain'),
+        'label'                 => __('Event', 'becTextDomain'),
+        'description'           => __('Event Description', 'becTextDomain'),
         'labels'                => $labels,
         'supports'              => array('title', 'editor', 'thumbnail'),
         'hierarchical'          => false,
@@ -97,15 +102,16 @@ function createEventCPTAndTaxonomy()
     return;
 }
 
-function loadFullCalendarCss(){
+function loadBECStyles(){
 	wp_enqueue_style('fullcalendar_css', 'https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/4.2.0/core/main.min.css', array(), '4.2.0', 'all');
 	wp_enqueue_style('fullcalendar_daygrid_css', 'https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/4.2.0/daygrid/main.min.css', array(), '4.2.0', 'all');
+	wp_enqueue_style('BEC_styles', BEC_PLUGIN_URL.'styles/main.css', array(), '0.2', 'all');
 	return;
 }
 
-function loadFullCalendarJs() {
-    wp_enqueue_script('fullcalendar_js', 'https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/4.2.0/core/main.min.js', array( 'jquery' ), '4.2.0', false );
-	wp_enqueue_script('fullcalendar_daygrid_js', 'https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/4.2.0/daygrid/main.min.js', array( 'jquery' ), '4.2.0', false );
-	wp_enqueue_script('load_calendar', plugin_dir_url( __FILE__ ).'scripts/load_calendar.js', array( 'jquery' ), '0.0.1', false );
+function loadFullCalendarJS() {
+    wp_enqueue_script('fullcalendar_js', 'https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/4.2.0/core/main.min.js', array('jquery'), '4.2.0', false);
+	wp_enqueue_script('fullcalendar_daygrid_js', 'https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/4.2.0/daygrid/main.min.js', array('jquery'), '4.2.0', false);
+	wp_enqueue_script('load_calendar', BEC_PLUGIN_URL.'scripts/load_calendar.js', array('jquery'), '0.0.1', false);
 	return;
 }

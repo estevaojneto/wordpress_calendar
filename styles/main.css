@@ -1,0 +1,46 @@
+@charset 'utf-8';
+.bec-container{
+    margin: calc(3 * 1rem) calc(10% + 60px)
+}
+
+.bec-fullcalendar{
+    height: 650px;
+    margin: 20px 0;
+}
+
+.bec-box { 
+    width:100%; 
+    display:table; 
+} 
+
+.bec-box .bec-box-row { 
+    display:table-row; 
+} 
+
+.bec-box .bec-box-cell { 
+    display:inline-block; 
+    width: 49%;
+    padding: 1rem;
+    margin: 0.1rem 0.1rem;
+} 
+
+.bec-event-card-border{
+    border: 0.05rem solid #ddd;
+}
+
+/* max device width */
+@media screen and (max-width: 960px) {
+    .bec-container{
+        margin: calc(2 * 1rem) 1rem
+    }
+    .bec-box .bec-box-cell {
+        display: grid;
+        width: 100%;
+        padding:1rem; 
+        margin: 0.2rem 0;
+    }
+    .bec-fullcalendar{
+    height: 90vh;
+    }
+
+}

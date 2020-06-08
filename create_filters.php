@@ -14,7 +14,7 @@
 function createEventArchive($archive_template)
 {
     if (is_post_type_archive('event')) {
-        $archive_template = BEC_PLUGIN_PATH . 'templates/archive-event.php';
+        $archive_template = BEC_PLUGIN_PATH . 'templates/archive-event/index.php';
     }
     return $archive_template;
 }
@@ -22,7 +22,7 @@ function createEventArchive($archive_template)
 function createSingleEventTemplate($single_template)
 {
     if (is_single() && get_post_type() === 'event') {
-        $single_template = BEC_PLUGIN_PATH . 'templates/single-event.php';
+        $single_template = BEC_PLUGIN_PATH . 'templates/single-event/index.php';
     }
     return $single_template;
 }
