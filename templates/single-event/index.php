@@ -1,27 +1,87 @@
-<?php get_header(); ?>
-
-	<div id="content" class="site-content">
-
-		<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
-		<div class="post" id="post-<?php the_ID(); ?>">
-		<h2><?php the_title(); ?></h2>
-			
-			<div class="entry">
-				<?php if (has_post_thumbnail( $post->ID ) ): ?>
-  <?php $image = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'single-post-thumbnail' ); ?>
-  <div id="custom-bg" style="background-image: url('<?php echo $image[0]; ?>')">
-
-  </div>
-<?php endif; ?>
-				<?php the_content(); 
-				echo get_post_meta( get_the_ID(), 'start_date', true );
-				echo get_post_meta( get_the_ID(), 'end_date', true );
-				?>
-				
-			</div>
-		</div>
-		<?php endwhile; endif; ?>
-	<?php edit_post_link('Edit this entry.', '<p>', '</p>'); ?>
+<?php 
+include_once('builder.php');
+get_header(); 
+?>
+<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
+<section class='bec-container'>
+<div class="post" id="post-<?php the_ID(); ?>">	
+	<h2 class="widget-title"><?php the_title(); ?></h2>
+	<div class="bec-box bec-event-card-border">
+	<div class="bec-box-row">	
+	<?php printFeaturedImageIfExists(); ?>
+	<div class='bec-box-cell'>		
+		<h3><?php _e('Event info', 'becTextDomain');?></h3>
+		<p><?php printRecurrencyInfo();?></p>
+		<p>
+			<?php _e('Starts at: ', 'becTextDomain');
+			printStartDate();
+			echo " - ";
+			echo get_post_meta( get_the_ID(), 'start_time', true);
+			?>
+		</p>
+		<p>
+			<?php _e('Ends at: ', 'becTextDomain');
+			printEndDate();
+			echo " - ";
+			echo get_post_meta( get_the_ID(), 'end_time', true);
+			?>
+		</p>
+		<p><?php _e('Address: ', 'becTextDomain');
+			echo get_post_meta( get_the_ID(), 'address', true);
+			?></p>
+		<p><?php 
+			if(get_post_meta( get_the_ID(), 'external_link', true)){
+				_e('Website: ', 'becTextDomain');
+				echo "<a href='".get_post_meta( get_the_ID(), 'external_link', true)."'>".get_post_meta( get_the_ID(), 'external_link', true)."</a>";
+			}
+			?></p>
+		<p><?php _e('Entry fee: ', 'becTextDomain');
+			echo "$".get_post_meta( get_the_ID(), 'price', true);
+			?></p>
+		<?php printNextEventDates(); ?>
 	</div>
+	<div class='bec-box-cell'>
+		<h3><?php _e('About this event', 'becTextDomain');?></h3>
+		<p><?php edit_post_link('Edit', '<p>', '</p>'); ?></p>
+		<?php the_content(); ?>
+		<hr>
+	<a href="../events"><?php _e("Return to archive", 'becTextDomain'); ?></a>
+	</div>	
+	</div>
+	</div>
+	</div>
+</section>
+<?php endwhile; endif; ?>	
+
+<section class='bec-container'>
+	<h2 class="widget-title">
+		<?php _e('Navigate archive', 'becTextDomain'); ?>
+	</h2>
+	<form id="archiveNavButton" action="../">
+		<select required name="year" id="year">
+			<option value="" selected></option>
+			<option value=2018>2018</option>
+			<option value=2019>2019</option>
+			<option value=2020>2020</option>
+		</select>
+		<select required name="monthnum" id="monthnum">
+			<option value="" selected></option>
+			<option value="01">01</option>
+			<option value="02">02</option>
+			<option value="03">03</option>
+			<option value="04">04</option>
+			<option value="05">05</option>
+			<option value="06">06</option>
+			<option value="07">07</option>
+			<option value="08">08</option>
+			<option value="09">09</option>
+			<option value="10">10</option>
+			<option value="11">11</option>
+			<option value="12">12</option>
+		</select>
+		<input type=hidden name="post_type" value="event">
+		<button><?php _e('Navigate', 'becTextDomain'); ?></button>
+	</form>
+</section>
 
 <?php get_footer(); ?>

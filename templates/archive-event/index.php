@@ -15,12 +15,12 @@ get_header();
 
 <section class='bec-container'>
 	<h2 class="widget-title">
-		<?php _e('Single-time events', 'becTextDomain')?>
+		<?php _e('One-time events', 'becTextDomain')?>
 	</h2>
 <div class="bec-box">
 <div class="bec-box-row">
 <?php 
-	printEventsGrid(fetchSingleEvents(), false);
+	printEventsGrid(fetchSimpleEvents(), false);
 ?>
 </div>
 </div>

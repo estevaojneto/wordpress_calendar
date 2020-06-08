@@ -52,12 +52,23 @@ function calcRecurringEventDates($originalDate, $recurrency, $currentDate)
             return false; // unexpected recurrency (weird value); returns false
             break;
     }
-    return $eventDates;
+	//array_filters the dates to not have any dates in the past (as per second bullet of requirement 4.2);
+	//array_values ensures the very next event date will be at the first position of the array
+	$filteredDates = array_values(array_filter($eventDates, function($date) { return($date >= date('Y-m-d')); } ));	
+    return $filteredDates;
 }
 
-function calcClosestEventDate($eventDates)
-{
-	if(!is_array($eventDates)) // we're expect an array, more precisely one created by calcRecurringEventDates()
-		return false;
-	// TODO rest of logic
+function calcEventLengthInDays($startDate, $endDate){
+	$deltaDate = strtotime($endDate) - strtotime($startDate);
+	return round($deltaDate / (60 * 60 * 24));
+}
+
+
+/* You'll probably want to call calcEventLengthInDays() before this to find the length in days of an event.
+ * Notice how I'm not calling it "calcRecurringEventEndDate"; this means this function can be applied to
+ * simple, one-time events too, if it ever proves necessary. */
+function calcEventEndDate($startDate, $eventLengthInDays){
+	$date = date_create($startDate);
+	date_add($date, date_interval_create_from_date_string($eventLengthInDays." days"));
+	return date_format($date, "Y-m-d");
 }

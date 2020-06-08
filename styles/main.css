@@ -1,4 +1,9 @@
 @charset 'utf-8';
+.fc-title {
+    color: #FFF;
+	font-style: italic;
+}
+
 .bec-container{
     margin: calc(3 * 1rem) calc(10% + 60px)
 }
@@ -21,6 +26,7 @@
     display:inline-block; 
     width: 49%;
     padding: 1rem;
+	vertical-align:middle;
     margin: 0.1rem 0.1rem;
 } 
 

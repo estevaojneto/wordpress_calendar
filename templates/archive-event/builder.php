@@ -26,10 +26,10 @@ function queryEventsArchive($args){
     return $result;
 }
 
-function fetchSingleEvents()
+function fetchSimpleEvents()
 {
     $month_number = convertMonthFormat(get_query_var('monthnum'));
-    $args_single_events = array(
+    $args_simple_events = array(
 	'post_type' => 'event',
 	'meta_key' => 'start_date', 
 	'meta_value'     => array(getArchiveStartDate($month_number), getArchiveEndDate($month_number)),
@@ -45,7 +45,7 @@ function fetchSingleEvents()
         )
      )
     );
-    return queryEventsArchive($args_single_events);
+    return queryEventsArchive($args_simple_events);
 }
 
 function fetchRecurrentEvents()
@@ -87,8 +87,8 @@ function catchEmptyArchive()
 }
 
 /**The signature seems peculiar, doesn't it? Why do we need to know what we're printing?
- * This is to avoid the following bug: if a month has recurring events but no single 
- * event, then qty_single_events is never echoed, and Javascript will attempt
+ * This is to avoid the following bug: if a month has recurring events but no simple 
+ * event, then qty_simple_events is never echoed, and Javascript will attempt
  * to access an inexistant document ID; the script will then crash, and will also
  * fail to add our neat recurring events to FullCalendar.
  */
@@ -116,8 +116,9 @@ function printEventsGrid($eventsArray, $printingRecurrents)
 		            echo get_post_meta(get_the_ID(), 'end_date', true)." @ ";
 		            echo get_post_meta(get_the_ID(), 'end_time', true);
 		            echo '</p>';
-		            echo "<input type='hidden' id='single_start_date".$events_counter ."' value='".$eventDates[0]."'>";
-                    echo "<input type='hidden' id='single_event_name".$events_counter ."' value='".get_the_title() ."'>";
+		            echo "<input type='hidden' id='simple_start_date".$events_counter ."' value='".$eventDates[0]."'>";
+                    echo "<input type='hidden' id='simple_event_name".$events_counter ."' value='".get_the_title() ."'>";
+					echo "<input type='hidden' id='simple_event_url".$events_counter ."' value='".get_permalink(get_the_ID())."'>";
                     break;
                 case 1:
                     echo '<p>';
@@ -126,21 +127,26 @@ function printEventsGrid($eventsArray, $printingRecurrents)
                     echo get_post_meta(get_the_ID(), 'end_time', true).".";
                     echo "<input type='hidden' id='recurrent_start_dates".$events_counter ."[]' value='".json_encode($eventDates)."'>";
                     echo "<input type='hidden' id='recurrent_event_name".$events_counter ."' value='".get_the_title() ."'>";
+					echo "<input type='hidden' id='recurrent_event_url".$events_counter ."' value='".get_permalink(get_the_ID()) ."'>";
                     echo '</p>';
                     break;
                 case 7:
                     echo '<p>';
-                    _e('This is a weekly event; it is scheduled to happen next at:', 'becTextDomain');
+                    _e('This is a weekly event; it is scheduled to happen next at: ', 'becTextDomain');
+					echo $eventDates[0];
                     echo '</p>';
                     echo "<input type='hidden' id='recurrent_start_dates".$events_counter ."[]' value='".json_encode($eventDates)."'>";
                     echo "<input type='hidden' id='recurrent_event_name".$events_counter ."' value='".get_the_title() ."'>";
+					echo "<input type='hidden' id='recurrent_event_url".$events_counter ."' value='".get_permalink(get_the_ID()) ."'>";
                     break;
                 case 30:
                     echo '<p>';
-                    _e('This is a monthly event; it is scheduled to happen next at:', 'becTextDomain');
+                    _e('This is a monthly event; it is scheduled to happen next at: ', 'becTextDomain');
+					echo $eventDates[0];
                     echo '</p>';
                     echo "<input type='hidden' id='recurrent_start_dates".$events_counter ."[]' value='".json_encode($eventDates)."'>";
                     echo "<input type='hidden' id='recurrent_event_name".$events_counter ."' value='".get_the_title() ."'>";
+					echo "<input type='hidden' id='recurrent_event_url".$events_counter ."' value='".get_permalink(get_the_ID()) ."'>";
                     break;
                 default:
                     break;
@@ -152,7 +158,8 @@ function printEventsGrid($eventsArray, $printingRecurrents)
 		    echo '</p>';
 		            
 		    echo '<p>';
-            _e('$:', 'becTextDomain');
+            _e('Entry fee: ', 'becTextDomain');
+			echo "$";
 		    echo get_post_meta(get_the_ID(), 'price', true);
 		    echo '</p>';
 		    echo "</div>";
