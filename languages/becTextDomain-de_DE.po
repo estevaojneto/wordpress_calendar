@@ -1,0 +1,154 @@
+msgid ""
+msgstr ""
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Project-Id-Version: wordpress_calendar\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Language-Team: \n"
+"X-Generator: Poedit 2.3.1\n"
+"Last-Translator: \n"
+"Language: de_DE\n"
+
+msgid "All events this month"
+msgstr "Alle Veranstaltungen in diesem Monat"
+
+msgid "Archived events"
+msgstr "Archivierte Ereignisse"
+
+msgid "Future events"
+msgstr "Zukünftige Ereignisse"
+
+msgid "Start date:"
+msgstr "Anfangsdatum:"
+
+msgid "End date:"
+msgstr "Endtermin:"
+
+msgid "Address:"
+msgstr "Adresse:"
+
+msgid "Entry fee:"
+msgstr "Eintrittspreis:"
+
+msgid "No events found"
+msgstr "Keine Ereignisse gefunden"
+
+msgid "This event"
+msgstr "Diese Veranstaltung"
+
+msgid "is one-time only!"
+msgstr "ist nur einmalig!"
+
+msgid "happens every day."
+msgstr "passiert jeden Tag."
+
+msgid "happens every week."
+msgstr "passiert jede Woche."
+
+msgid "happens every month on this same date."
+msgstr "happens every month on this same date."
+
+msgid "The next instance of this event will only happen next month."
+msgstr "EstDie nächste Instanz dieses Ereignisses wird erst nächsten Monat stattfinden."
+
+msgid "Next instances of this event on this month"
+msgstr "Nächste Instanzen dieses Ereignisses in diesem Monat"
+
+msgid "Events"
+msgstr "Veranstaltungen"
+
+msgid "Event"
+msgstr "Veranstaltung"
+
+msgid "Item Archives"
+msgstr "Item Archives"
+
+msgid "Item Attributes"
+msgstr "Artikelattribute"
+
+msgid "Parent Item:"
+msgstr "Eltern Artikel:"
+
+msgid "All Items"
+msgstr "Alle Elemente"
+
+msgid "Add New Item"
+msgstr "Füge neuen Gegenstand hinzu"
+
+msgid "Add New"
+msgstr "Neue hinzufügen"
+
+msgid "New Item"
+msgstr "Neuer Gegenstand"
+
+msgid "Edit Item"
+msgstr "Element bearbeiten"
+
+msgid "Update Item"
+msgstr "Element aktualisieren"
+
+msgid "View Item"
+msgstr "Element anzeigen"
+
+msgid "View Items"
+msgstr "Elemente anzeigen"
+
+msgid "Search Item"
+msgstr "Suchelement"
+
+msgid "Not found"
+msgstr "Nicht gefunden"
+
+msgid "Not found in Trash"
+msgstr "Nicht im Papierkorb gefunden"
+
+msgid "Featured Image"
+msgstr "Ausgewähltes Bild"
+
+msgid "Set featured image"
+msgstr "Stellen Sie das vorgestellte Bild ein"
+
+msgid "Remove featured image"
+msgstr "Entfernen Sie das vorgestellte Bild"
+
+msgid "Use as featured image"
+msgstr "Als vorgestellten Bild verwenden"
+
+msgid "Insert into item"
+msgstr "In Artikel einfügen"
+
+msgid "Uploaded to this item"
+msgstr "Auf diesen Artikel hochgeladen"
+
+msgid "Items list"
+msgstr "Artikelliste"
+
+msgid "Items list navigation"
+msgstr "Artikellisten-Navigation"
+
+msgid "Filter items list"
+msgstr "Elementliste filtern"
+
+msgid "Navigate archive"
+msgstr "Im Archiv navigieren"
+
+msgid "Navigate"
+msgstr "Navigieren"
+
+msgid "Starts at:"
+msgstr "Startet um:"
+
+msgid "Ends at:"
+msgstr "Endet am:"
+
+msgid "About this event"
+msgstr "Über diese Veranstaltung"
+
+msgid "Event info"
+msgstr "Ereignisinfo"
+
+msgid "Return to archive"
+msgstr "Zurück zum Archiv"
