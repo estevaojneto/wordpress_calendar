@@ -1,8 +1,12 @@
-<?php 
+<?php
 require_once 'builder.php';
-get_header(); 
+get_header();
 ?>
-<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
+<?php
+if (have_posts()) :
+    while (have_posts()) :
+        the_post();
+        ?>
 <article>
 <section>
 <div class='bec-container'>
@@ -34,11 +38,12 @@ get_header();
             echo " ";
         echo get_post_meta(get_the_ID(), 'address', true);
         ?></p>
-        <p><?php 
-        if(get_post_meta(get_the_ID(), 'external_link', true)) {
+        <p><?php
+        if (get_post_meta(get_the_ID(), 'external_link', true)) {
             _e('Website:', 'becTextDomain');
             echo " ";
-            echo "<a href='".get_post_meta(get_the_ID(), 'external_link', true)."'>".get_post_meta(get_the_ID(), 'external_link', true)."</a>";
+            $externalLink = get_post_meta(get_the_ID(), 'external_link', true);
+            echo "<a href='".$externalLink."'>".$externalLink."</a>";
         }
         ?></p>
         <p><?php _e('Entry fee:', 'becTextDomain');
@@ -59,8 +64,10 @@ get_header();
     </div>
 </div>
 </section>
-<?php endwhile; 
-endif; ?>    
+        <?php
+    endwhile;
+endif;
+?>
 
 <section>
     <div class='bec-container'>

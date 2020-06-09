@@ -1,6 +1,6 @@
 <?php
 require_once 'builder.php';
-initArchiveEvent(); 
+initArchiveEvent();
 get_header();
 ?>
 
@@ -19,11 +19,11 @@ get_header();
 <section>
     <div class='bec-container'>
     <h2 class="widget-title">
-        <?php 
+        <?php
         $queriedMonthYear = date('Y-m', strtotime(get_query_var('year')."-".get_query_var('monthnum')));
-        if($queriedMonthYear == date('Y-m')) {
+        if ($queriedMonthYear == date('Y-m')) {
             _e('All events this month', 'becTextDomain');
-        } else if ($queriedMonthYear < date('Y-m')) {
+        } elseif ($queriedMonthYear < date('Y-m')) {
             _e('Archived events', 'becTextDomain');
         } else {
             _e('Future events', 'becTextDomain');
@@ -32,7 +32,7 @@ get_header();
     </h2>
 <div class="bec-box">
 <div class="bec-box-row">
-<?php 
+<?php
     printEventsGrid(fetchEvents());
 ?>
 </div>
