@@ -10,82 +10,82 @@ msgstr ""
 "Language-Team: \n"
 "X-Generator: Poedit 2.3.1\n"
 "Last-Translator: \n"
-"Language: en_US\n"
+"Language: pt_BR\n"
 
 msgid "All events this month"
-msgstr "All events this month"
+msgstr "Eventos desse mês"
 
 msgid "Archived events"
-msgstr "Archived events"
+msgstr "Eventos arquivados"
 
 msgid "Future events"
-msgstr "Future events"
+msgstr "Eventos futuros"
 
 msgid "Start date:"
-msgstr "Start date:"
+msgstr "Data início:"
 
 msgid "End date:"
-msgstr "End date:"
+msgstr "Data fim:"
 
 msgid "Address:"
-msgstr "Address:"
+msgstr "Endereço:"
 
 msgid "Entry fee:"
-msgstr "Entry fee:"
+msgstr "Taxa de entrada:"
 
 msgid "No events found"
-msgstr "No events found"
+msgstr "Sem eventos encontrados"
 
 msgid "This event"
-msgstr "This event"
+msgstr "Este evento"
 
 msgid "is one-time only!"
-msgstr "is one-time only!"
+msgstr "só acontecerá uma vez!"
 
 msgid "happens every day."
-msgstr "happens every day."
+msgstr "acontece diariamente."
 
 msgid "happens every week."
-msgstr "happens every week."
+msgstr "acontece semanalmente."
 
 msgid "happens every month on this same date."
-msgstr "happens every month on this same date."
+msgstr "acontece mensalmente nessa data."
 
 msgid "The next instance of this event will only happen next month."
-msgstr "The next instance of this event will only happen next month."
+msgstr "Este evento só tornará a acontecer no mês que vem."
 
 msgid "Next instances of this event on this month"
-msgstr "Next instances of this event on this month"
+msgstr "Próximas datas deste evento nesse mês"
 
 msgid "Events"
-msgstr "Events"
+msgstr "Eventos"
 
 msgid "Event"
-msgstr "Event"
+msgstr "Evento"
 
 msgid "Item Archives"
-msgstr "Item Archives"
+msgstr "Arquivo de eventos"
 
 msgid "Item Attributes"
-msgstr "Item Attributes"
+msgstr "Atributos do evento"
 
 msgid "Parent Item:"
-msgstr "Parent Item:"
+msgstr "Evento pai:"
 
 msgid "All Items"
-msgstr "All Items"
+msgstr "Todos itens"
 
 msgid "Add New Item"
-msgstr "Add New Item"
+msgstr "Adicionar novo evento"
 
 msgid "Add New"
-msgstr "Add New"
+msgstr "Adicionar Novo"
 
 msgid "New Item"
 msgstr "New Item"
 
 msgid "Edit Item"
-msgstr "Edit Item"
+msgstr "Editar Item"
 
 msgid "Update Item"
 msgstr "Update Item"
@@ -100,55 +100,55 @@ msgid "Search Item"
 msgstr "Search Item"
 
 msgid "Not found"
-msgstr "Not found"
+msgstr "Não encontrado"
 
 msgid "Not found in Trash"
-msgstr "Not found in Trash"
+msgstr "Não encontrado na lixeira"
 
 msgid "Featured Image"
-msgstr "Featured Image"
+msgstr "Imagem em Destque"
 
 msgid "Set featured image"
-msgstr "Set featured image"
+msgstr "Configurar imagem destaque"
 
 msgid "Remove featured image"
-msgstr "Remove featured image"
+msgstr "Remover imagem destaque"
 
 msgid "Use as featured image"
-msgstr "Use as featured image"
+msgstr "Utilizar como destaque"
 
 msgid "Insert into item"
-msgstr "Insert into item"
+msgstr "Inserir no item"
 
 msgid "Uploaded to this item"
-msgstr "Uploaded to this item"
+msgstr "Enviado a este item"
 
 msgid "Items list"
-msgstr "Items list"
+msgstr "Lista de itens"
 
 msgid "Items list navigation"
-msgstr "Items list navigation"
+msgstr "Navegar na lista de itens"
 
 msgid "Filter items list"
-msgstr "Filter items list"
+msgstr "Filtrar lista de itens"
 
 msgid "Navigate archive"
-msgstr "Navigate archive"
+msgstr "Navegar no arquivo"
 
 msgid "Navigate"
-msgstr "Navigate"
+msgstr "Navegar"
 
 msgid "Starts at:"
-msgstr "Starts at:"
+msgstr "Começa em:"
 
 msgid "Ends at:"
-msgstr "Ends at:"
+msgstr "Termina em:"
 
 msgid "About this event"
-msgstr "About this event"
+msgstr "Sobre esse evento"
 
 msgid "Event info"
-msgstr "Event info"
+msgstr "Detalhes do evento"
 
 msgid "Return to archive"
-msgstr "Return to archive"
+msgstr "Voltar ao arquivo"

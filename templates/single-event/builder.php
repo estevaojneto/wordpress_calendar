@@ -30,7 +30,9 @@ function printNextEventDates(){
 	if(get_post_meta( get_the_ID(), 'recurrency', true) > 0){
 		$startDate = calcStartDate();
 		if(count($startDate) > 0){
-			echo "<p><small>Next instances of this event on this month:<br>";
+			echo "<p><small>";
+			_e('Next instances of this event on this month', 'becTextDomain');
+			echo ":<br>";
 			$i = 0;
 			foreach($startDate as $date){
 				if($i == 4)
@@ -40,7 +42,8 @@ function printNextEventDates(){
 			}
 		}
 		else{
-			echo "<p><small>The next instance of this event will only happen next month.";
+			echo "<p><small>";
+			_e('The next instance of this event will only happen next month.', 'becTextDomain');
 		}
 		echo "</small></p>";
 	}
@@ -49,7 +52,8 @@ function printNextEventDates(){
 
 function printRecurrencyInfo()
 {
-	_e("This event ", 'becTextDomain');
+	_e("This event", 'becTextDomain');
+	echo " ";
 	switch(get_post_meta( get_the_ID(), 'recurrency', true))	{
 		case 0:
 			_e("is one-time only!", 'becTextDomain');

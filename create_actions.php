@@ -26,7 +26,7 @@ function setRewriteRules()
 }
 // Load files for internationalization
 function loadPluginI18N(){
-    load_plugin_textdomain('becTextDomain', false, BEC_PLUGIN_PATH . '/languages/');
+    load_plugin_textdomain('becTextDomain', FALSE, basename( dirname( __FILE__ ) ) . '/languages/');
     return;
 }
 

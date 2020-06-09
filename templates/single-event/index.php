@@ -3,7 +3,9 @@ include_once('builder.php');
 get_header(); 
 ?>
 <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
-<section class='bec-container'>
+<article>
+<section>
+<div class='bec-container'>
 <div class="post" id="post-<?php the_ID(); ?>">	
 	<h2 class="widget-title"><?php the_title(); ?></h2>
 	<div class="bec-box bec-event-card-border">
@@ -13,36 +15,41 @@ get_header();
 		<h3><?php _e('Event info', 'becTextDomain');?></h3>
 		<p><?php printRecurrencyInfo();?></p>
 		<p>
-			<?php _e('Starts at: ', 'becTextDomain');
+			<?php _e('Starts at:', 'becTextDomain');
+			echo " ";
 			printStartDate();
 			echo " - ";
 			echo get_post_meta( get_the_ID(), 'start_time', true);
 			?>
 		</p>
 		<p>
-			<?php _e('Ends at: ', 'becTextDomain');
+			<?php _e('Ends at:', 'becTextDomain');
+			echo " ";
 			printEndDate();
 			echo " - ";
 			echo get_post_meta( get_the_ID(), 'end_time', true);
 			?>
 		</p>
-		<p><?php _e('Address: ', 'becTextDomain');
+		<p><?php _e('Address:', 'becTextDomain');
+		    echo " ";
 			echo get_post_meta( get_the_ID(), 'address', true);
 			?></p>
 		<p><?php 
 			if(get_post_meta( get_the_ID(), 'external_link', true)){
-				_e('Website: ', 'becTextDomain');
+				_e('Website:', 'becTextDomain');
+				echo " ";
 				echo "<a href='".get_post_meta( get_the_ID(), 'external_link', true)."'>".get_post_meta( get_the_ID(), 'external_link', true)."</a>";
 			}
 			?></p>
-		<p><?php _e('Entry fee: ', 'becTextDomain');
+		<p><?php _e('Entry fee:', 'becTextDomain');
+		       echo " ";
 			echo "$".get_post_meta( get_the_ID(), 'price', true);
 			?></p>
 		<?php printNextEventDates(); ?>
 	</div>
 	<div class='bec-box-cell'>
 		<h3><?php _e('About this event', 'becTextDomain');?></h3>
-		<p><?php edit_post_link('Edit', '<p>', '</p>'); ?></p>
+		<p><?php edit_post_link('✏️', '<p>', '</p>'); ?></p>
 		<?php the_content(); ?>
 		<hr>
 	<a href="../events"><?php _e("Return to archive", 'becTextDomain'); ?></a>
@@ -50,10 +57,12 @@ get_header();
 	</div>
 	</div>
 	</div>
+</div>
 </section>
 <?php endwhile; endif; ?>	
 
-<section class='bec-container'>
+<section>
+    <div class='bec-container'>
 	<h2 class="widget-title">
 		<?php _e('Navigate archive', 'becTextDomain'); ?>
 	</h2>
@@ -82,6 +91,7 @@ get_header();
 		<input type=hidden name="post_type" value="event">
 		<button><?php _e('Navigate', 'becTextDomain'); ?></button>
 	</form>
+	</div>
 </section>
-
+</article>
 <?php get_footer(); ?>

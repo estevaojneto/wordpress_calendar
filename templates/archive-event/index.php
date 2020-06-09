@@ -4,16 +4,20 @@ initArchiveEvent();
 get_header();
 ?>
 
-<section class='bec-container'>
+<article>
+<section>
+    <div class='bec-container'>
 	<input type='hidden' id='monthnum' value="<?php echo get_query_var('monthnum');?>">
 	<input type='hidden' id='day' value="<?php echo get_query_var('day');?>">
 	<input type='hidden' id='year' value="<?php echo get_query_var('year');?>">
 
 	<div id='calendar' class='bec-fullcalendar'>
 	</div>
+	</div>
 </section>
 
-<section class='bec-container'>
+<section>
+    <div class='bec-container'>
 	<h2 class="widget-title">
 		<?php 
 		$queriedMonthYear = date('Y-m', strtotime(get_query_var('year')."-".get_query_var('monthnum')));
@@ -32,10 +36,12 @@ get_header();
 ?>
 </div>
 </div>
+</div>
 </section>
 
 
-<section class='bec-container'>
+<section>
+<div class='bec-container'>
 	<h2 class="widget-title">
 		<?php _e('Navigate archive', 'becTextDomain'); ?>
 	</h2>
@@ -64,6 +70,7 @@ get_header();
 		<input type=hidden name="post_type" value="event">
 		<button><?php _e('Navigate', 'becTextDomain'); ?></button>
 	</form>
+</div>
 </section>
-
+</article>
 <?php get_footer(); ?>

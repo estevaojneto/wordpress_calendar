@@ -129,12 +129,14 @@ function printEventsGrid($eventsArray)
 			echo "<input type='hidden' id='event_url".$events_counter ."' value='".get_permalink(get_the_ID())."'>";
 			echo '</p>';
             echo '<p>';
-            _e('Address: ', 'becTextDomain');
+            _e('Address:', 'becTextDomain');
+            echo " ";
 		    echo get_post_meta(get_the_ID(), 'address', true);
 		    echo '</p>';
 		            
 		    echo '<p>';
-            _e('Entry fee: ', 'becTextDomain');
+            _e('Entry fee:', 'becTextDomain');
+            echo " ";
 			echo "$";
 		    echo get_post_meta(get_the_ID(), 'price', true);
 		    echo '</p>';
