@@ -4,7 +4,7 @@
  * This file contains all the functions we need to build the archive-event page.
  * In the event any of those functions end up being useful in more than only this
  * page, I shall move such function to 'helpers.php' (it is literally why it exists).
- */ 
+ */
 
 function initArchiveEvent()
 {
@@ -38,9 +38,9 @@ function fetchEvents()
     $month_number = convertMonthFormat(get_query_var('monthnum'));
     $args_simple_events = array(
     'post_type' => 'event',
-    'meta_key' => 'start_date', 
+    'meta_key' => 'start_date',
     'meta_value'     => array(getArchiveStartDate($month_number), getArchiveEndDate($month_number)),
-    'meta_compare' => 'BETWEEN', 
+    'meta_compare' => 'BETWEEN',
     'type' => 'DATE',
     'meta_query'     => array(
         'relation'  => 'AND',
@@ -90,10 +90,10 @@ function convertMonthFormat($wp_month)
 
 function catchEmptyArchive()
 {
-    if(get_query_var('monthnum') == 0) {
+    if (get_query_var('monthnum') == 0) {
         set_query_var('monthnum', date('m'));
     }
-    if(get_query_var('year') == 0) {
+    if (get_query_var('year') == 0) {
         set_query_var('year', date('Y'));
     }
     return;
@@ -101,7 +101,7 @@ function catchEmptyArchive()
 
 /**
  * The signature seems peculiar, doesn't it? Why do we need to know what we're printing?
- * This is to avoid the following bug: if a month has recurring events but no simple 
+ * This is to avoid the following bug: if a month has recurring events but no simple
  * event, then qty_simple_events is never echoed, and Javascript will attempt
  * to access an inexistant document ID; the script will then crash, and will also
  * fail to add our neat recurring events to FullCalendar.
@@ -109,12 +109,20 @@ function catchEmptyArchive()
 function printEventsGrid($eventsArray)
 {
     $events_counter = 0;
-    if ($eventsArray->have_posts() ) {    
-        while ( $eventsArray->have_posts() ) {
+    if ($eventsArray->have_posts()) {
+        while ($eventsArray->have_posts()) {
             echo "<div class='bec-box-cell bec-event-card-border'>";
             echo $eventsArray->the_post();
             echo "<a href='".get_permalink(get_the_ID())."'> ".get_the_title()."</a>";
-            $eventDates = calcRecurringEventDates(get_post_meta(get_the_ID(), 'start_date', true), get_post_meta(get_the_ID(), 'recurrency', true), getArchiveStartDate(convertMonthFormat(get_query_var('monthnum'))));
+            $eventDates = calcRecurringEventDates(
+                get_post_meta(get_the_ID(), 'start_date', true),
+                get_post_meta(get_the_ID(), 'recurrency', true),
+                getArchiveStartDate(
+                    convertMonthFormat(
+                        get_query_var('monthnum')
+                    )
+                )
+            );
              echo '<p>';
             _e('Start date:', 'becTextDomain');
             echo getStartDate($eventDates);
@@ -124,7 +132,19 @@ function printEventsGrid($eventsArray)
                     
             echo '<p>';
             _e('End date:', 'becTextDomain');
-            echo getEndDate($eventDates, get_post_meta(get_the_ID(), 'start_date', true), get_post_meta(get_the_ID(), 'end_date', true));
+            echo getEndDate(
+                $eventDates,
+                get_post_meta(
+                    get_the_ID(),
+                    'start_date',
+                    true
+                ),
+                get_post_meta(
+                    get_the_ID(),
+                    'end_date',
+                    true
+                )
+            );
             echo " @ ";
             echo get_post_meta(get_the_ID(), 'end_time', true);
             echo "</p>";
@@ -148,8 +168,7 @@ function printEventsGrid($eventsArray)
             echo "</div>";
             ++$events_counter;
         }
-    }
-    else{
+    } else {
         _e('No events found', 'becTextDomain');
     }
         echo "<input type='hidden' id='qty_events' value=$events_counter>";

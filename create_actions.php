@@ -91,7 +91,9 @@ function createEventCPTAndTaxonomy()
     );
     register_post_type('event', $args);
     register_taxonomy(
-        'event-category', 'event', array(
+        'event-category',
+        'event',
+        array(
         'hierarchical'    => false,
         'singular_name'   => __('Event'),
         'label'           => __('Event categories'),
