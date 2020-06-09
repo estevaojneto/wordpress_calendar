@@ -15,26 +15,20 @@ get_header();
 
 <section class='bec-container'>
 	<h2 class="widget-title">
-		<?php _e('One-time events', 'becTextDomain')?>
+		<?php 
+		$queriedMonthYear = date('Y-m', strtotime(get_query_var('year')."-".get_query_var('monthnum')));
+		if($queriedMonthYear == date('Y-m'))
+			_e('All events this month', 'becTextDomain');
+		else if ($queriedMonthYear < date('Y-m'))
+			_e('Archived events', 'becTextDomain');
+		else
+			_e('Future events', 'becTextDomain');
+		?>
 	</h2>
 <div class="bec-box">
 <div class="bec-box-row">
 <?php 
-	printEventsGrid(fetchSimpleEvents(), false);
-?>
-</div>
-</div>
-</section>
-
-
-<section class='bec-container'>
-	<h2 class="widget-title">
-		<?php _e('Recurrent events', 'becTextDomain'); ?>
-	</h2>
-<div class="bec-box">
-<div class="bec-box-row">
-<?php 
-	printEventsGrid(fetchRecurrentEvents(), true);
+	printEventsGrid(fetchEvents());
 ?>
 </div>
 </div>

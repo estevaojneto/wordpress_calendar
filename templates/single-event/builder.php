@@ -9,13 +9,6 @@ function printStartDate()
 	echo $startDate[0];
 	return;
 }
-function printFeaturedImageIfExists(){
-	if(wp_get_attachment_image_src( get_post_thumbnail_id(), 'full' )[0]){
-		echo "<div class='bec-box-cell'>";
-		echo "<img src='".wp_get_attachment_image_src( get_post_thumbnail_id(), 'full' )[0]."' alt='event image'>";
-		echo "</div>";
-	} 
-}
 
 function printEndDate()
 {
@@ -23,6 +16,14 @@ function printEndDate()
 	$eventLength = calcEventLengthInDays(get_post_meta( get_the_ID(), 'start_date', true), get_post_meta( get_the_ID(), 'end_date', true));
 	echo calcEventEndDate($startDate[0], $eventLength);
 	return;
+}
+
+function printFeaturedImageIfExists(){
+	if(wp_get_attachment_image_src( get_post_thumbnail_id(), 'full' )[0]){
+		echo "<div class='bec-box-cell'>";
+		echo "<img src='".wp_get_attachment_image_src( get_post_thumbnail_id(), 'full' )[0]."' alt='event image'>";
+		echo "</div>";
+	} 
 }
 
 function printNextEventDates(){	
