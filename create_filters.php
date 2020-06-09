@@ -4,7 +4,9 @@
  * these, too, set much of what our plugin does.
  * FUNCTIONS:
  * createEventArchive(): loads the template for the event archive page;
+ * 
  * createSingleEventTemplate(): loads the template for a single event page;
+ * 
  * createEventMetaBoxes(): creates MetaBoxes using Metabox.io (included in main.php),
  * complying with the requests of the documentation;
  */
@@ -60,8 +62,7 @@ function createEventMetaBoxes()
             ),
             array(
                 'name'            => 'Recurrency',
-                'desc'    => 'Selecting this setting will overrule the Ending date; 
-				many events will be created as per your settings',
+                'desc'    => 'Selecting this setting will overrule the Ending date; many events will be created as per your settings',
                 'id'              => 'recurrency',
                 'type'            => 'select',
                 'options'         => array(

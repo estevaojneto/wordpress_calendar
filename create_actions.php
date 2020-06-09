@@ -28,7 +28,17 @@ function loadPluginI18N()
     load_plugin_textdomain('becTextDomain', false, $languageFolder);
     return;
 }
-
+function registerEventArchiveMenu()
+{
+    global $wp_admin_bar;
+    $args = array(
+        'id'    => 'eventArchiveBar',
+        'title' => __('Navigate archive', 'becTextDomain'),
+        'href'  => site_url().'/events',
+    );
+    $wp_admin_bar->add_node($args);
+    return;
+}
 function setEventRecurrency($post_id, $post)
 {
     if (!is_object($post) || !isset($post->post_type)) {
@@ -94,11 +104,11 @@ function createEventCPTAndTaxonomy()
         'event-category',
         'event',
         array(
-        'hierarchical'    => false,
-        'singular_name'   => __('Event'),
-        'label'           => __('Event categories'),
-        'query_var'       => 'events-category',
-        'rewrite'         => array('slug' => 'events')
+            'hierarchical'    => false,
+            'singular_name'   => __('Event'),
+            'label'           => __('Event categories'),
+            'query_var'       => 'events-category',
+            'rewrite'         => array('slug' => 'events')
         )
     );
     return;

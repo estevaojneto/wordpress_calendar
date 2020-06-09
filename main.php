@@ -29,6 +29,7 @@ require_once 'libraries/meta-box/meta-box.php';
 add_action('init', 'createEventCPTAndTaxonomy', 0);
 add_action('init', 'setRewriteRules', 1);
 add_action('plugins_loaded', 'loadPluginI18N');
+add_action('admin_bar_menu', 'registerEventArchiveMenu', 99);
 add_action('wp_enqueue_scripts', 'loadBECStyles');
 add_action('wp_enqueue_scripts', 'loadFullCalendarJS');
 add_action('save_post_event', 'setEventRecurrency', 1, 2);
