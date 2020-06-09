@@ -1,5 +1,6 @@
 <?php
-/** This file has the functions for the add_filters we defined in main.php;
+/**
+ * This file has the functions for the add_filters we defined in main.php;
  * these, too, set much of what our plugin does.
  * FUNCTIONS:
  * createEventArchive(): loads the template for the event archive page;
@@ -8,7 +9,6 @@
  * 
  * createEventMetaBoxes(): creates MetaBoxes using Metabox.io (included in main.php),
  * complying with the requests of the documentation;
- * 
  */
 
 function createEventArchive($archive_template)
@@ -41,7 +41,7 @@ function createEventMetaBoxes()
                 'type' => 'date',
                 'timestamp' => false
             ),
-			array(
+        array(
                 'id' => 'start_time',
                 'name' => 'Starting time',
                 'required'  => true,
@@ -54,7 +54,7 @@ function createEventMetaBoxes()
                 'type' => 'date',
                 'timestamp' => false
             ),
-			array(
+        array(
                 'id' => 'end_time',
                 'name' => 'End time',
                 'required'  => true,
@@ -72,7 +72,7 @@ function createEventMetaBoxes()
                     30     => 'Every month',
                 ),
                 'multiple'        => false,
-				'required'  => true,
+            'required'  => true,
                 'placeholder'     => 'Select',
                 'select_all_none' => true,
             ),
@@ -85,18 +85,18 @@ function createEventMetaBoxes()
                 'name'        => 'Address',
                 'label_description' => 'Please insert the address and venue (e.g NYC, JFK Airport, Gate 13)',
                 'id'          => 'address',
-				'required'  => true,
+        'required'  => true,
                 'type'        => 'text'
-				),
-			array(
+        ),
+        array(
                 'name'        => 'Entrance Fee',
                 'label_description' => 'Enter 0 for free entry/no cost event',
                 'id'          => 'price',
-				'required'  => true,
+        'required'  => true,
                 'type'        => 'number',
-				'step' => '0.01'
-				),
-			
+        'step' => '0.01'
+        ),
+            
         ),
     );
     return $meta_boxes;

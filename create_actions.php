@@ -1,21 +1,18 @@
 <?php
-/** This file has the functions for the add_actions we defined in main.php;
+/**
+ * This file has the functions for the add_actions we defined in main.php;
  * these set much of what our plugin does.
  * FUNCTIONS:
- * setRewriteRules(): sets rewrite rules to avoid problematic archiving and broken links,
- * and gives us some nice readable event URLs;
- * 
- * setEventRecurrency(): creates multiple events with a certain time interval between
- * them, as requested by documentation;
- * 
- * createEventCPTAndTaxonomy(): creates a CPT called "event", and also its taxonomy;
- * for simplicity, we'll create these together as their existance is very closely linked;
- * 
- * loadFullCalendarCss(): FullCalendar is the jQuery plugin we are using on the archive page,
- * and this function is responsible for loading its CSS (must be loaded before the script);
- * 
- * loadFullCalendarJs(): same as above but with JS; this must be loaded *after* the style and
- * *after* jQuery is loaded.
+ * setRewriteRules(): sets rewrite rules to avoid problematic archiving and
+ * broken links and gives us some nice readable event URLs;
+ * setEventRecurrency(): creates multiple events with a certain time interval
+ * between them, as requested by documentation;
+ * createEventCPTAndTaxonomy(): creates a CPT called "event", and also taxonomy;
+ * for simplicity, we'll create these together as they're closely linked;
+ * loadFullCalendarCss(): Loads the CSS for the jQuery plugin we are using on
+ * the archive page
+ * loadFullCalendarJs(): same as above but with JS; this must be loaded *after*
+ * the style and *after* jQuery is loaded.
  */
 
 function setRewriteRules()
@@ -24,18 +21,20 @@ function setRewriteRules()
     $wp_rewrite->set_permalink_structure('/%category%/%postname%');
     return;
 }
-// Load files for internationalization
-function loadPluginI18N(){
-    load_plugin_textdomain('becTextDomain', FALSE, basename( dirname( __FILE__ ) ) . '/languages/');
+
+function loadPluginI18N()
+{
+    $languageFolder = basename(dirname(__FILE__)) . '/languages/';
+    load_plugin_textdomain('becTextDomain', false, $languageFolder);
     return;
 }
 
 function setEventRecurrency($post_id, $post)
 {
-    if(!is_object($post) || !isset($post->post_type)) {
+    if (!is_object($post) || !isset($post->post_type)) {
         return;
     }
-	$recurrency_rate = get_post_meta( $post->ID, 'recurrency', true );
+    $recurrency_rate = get_post_meta($post->ID, 'recurrency', true);
     return;
 }
 
@@ -91,27 +90,66 @@ function createEventCPTAndTaxonomy()
         'capability_type'       => 'page',
     );
     register_post_type('event', $args);
-    register_taxonomy('event-category', 'event', array(
+    register_taxonomy(
+        'event-category', 'event', array(
         'hierarchical'    => false,
         'singular_name'   => __('Event'),
         'label'           => __('Event categories'),
         'query_var'       => 'events-category',
         'rewrite'         => array('slug' => 'events')
-       )
+        )
     );
     return;
 }
 
-function loadBECStyles(){
-	wp_enqueue_style('fullcalendar_css', 'https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/4.2.0/core/main.min.css', array(), '4.2.0', 'all');
-	wp_enqueue_style('fullcalendar_daygrid_css', 'https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/4.2.0/daygrid/main.min.css', array(), '4.2.0', 'all');
-	wp_enqueue_style('BEC_styles', BEC_PLUGIN_URL.'styles/main.css', array(), '0.2', 'all');
-	return;
+function loadBECStyles()
+{
+    wp_enqueue_style(
+        'fullcalendar_css',
+        'https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/4.2.0/core/main.min.css',
+        array(),
+        '4.2.0',
+        'all'
+    );
+    wp_enqueue_style(
+        'fullcalendar_daygrid_css',
+        'https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/4.2.0/daygrid/main.min.css',
+        array(),
+        '4.2.0',
+        'all'
+    );
+    wp_enqueue_style(
+        'BEC_styles',
+        BEC_PLUGIN_URL.'styles/main.css',
+        array(),
+        '0.2',
+        'all'
+    );
+    return;
 }
 
-function loadFullCalendarJS() {
-    wp_enqueue_script('fullcalendar_js', 'https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/4.2.0/core/main.min.js', array('jquery'), '4.2.0', false);
-	wp_enqueue_script('fullcalendar_daygrid_js', 'https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/4.2.0/daygrid/main.min.js', array('jquery'), '4.2.0', false);
-	wp_enqueue_script('load_calendar', BEC_PLUGIN_URL.'scripts/load_calendar.js', array('jquery'), '0.0.1', false);
-	return;
+function loadFullCalendarJS()
+{
+    wp_enqueue_script(
+        'fullcalendar_js',
+        'https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/4.2.0/core/main.min.js',
+        array('jquery'),
+        '4.2.0',
+        false
+    );
+    wp_enqueue_script(
+        'fullcalendar_daygrid_js',
+        'https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/4.2.0/daygrid/main.min.js',
+        array('jquery'),
+        '4.2.0',
+        false
+    );
+    wp_enqueue_script(
+        'load_calendar',
+        BEC_PLUGIN_URL.'scripts/load_calendar.js',
+        array('jquery'),
+        '0.0.1',
+        false
+    );
+    return;
 }
