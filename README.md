@@ -1,2 +1,2 @@
-# wordpress_calendar
+# Basic Event Calendar - BEC
 A WordPress plugin for an event calendar.
